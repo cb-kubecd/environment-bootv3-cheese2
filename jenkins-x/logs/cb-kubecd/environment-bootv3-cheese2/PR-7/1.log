@@ -1,0 +1,48 @@
+
+Showing logs for build [32mcb-kubecd-environment-bootv3-ch-cdb4r-1[0m stage [32mpr-checks[0m and container [32mstep-credential-initializer-wjscq[0m
+{"level":"warn","ts":1587795242.213999,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1587795242.2152374,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mcb-kubecd-environment-bootv3-ch-cdb4r-1[0m stage [32mpr-checks[0m and container [32mstep-working-dir-initializer-4vscv[0m
+{"level":"warn","ts":1587795243.5770235,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1587795243.57856,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mcb-kubecd-environment-bootv3-ch-cdb4r-1[0m stage [32mpr-checks[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mcb-kubecd-environment-bootv3-ch-cdb4r-1[0m stage [32mpr-checks[0m and container [32mstep-git-source-cb-kubecd-environment-bootv3-ch-cdb4r-tjmtp[0m
+{"level":"warn","ts":1587795249.6799872,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1587795250.7311547,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/cb-kubecd/environment-bootv3-cheese2.git @ master in path /workspace/source"}
+
+Showing logs for build [32mcb-kubecd-environment-bootv3-ch-cdb4r-1[0m stage [32mpr-checks[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:3de0db231c8bdb506eea04ab8d733b378a0d4513,7:bcfcc5d1a09cccd9813fd85dd324fd9392f2c568
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git fetch origin --unshallow bcfcc5d1a09cccd9813fd85dd324fd9392f2c568: 3de0db231c8bdb506eea04ab8d733b378a0d4513:
+DEBUG: ran git fetch --unshallow origin bcfcc5d1a09cccd9813fd85dd324fd9392f2c568: 3de0db231c8bdb506eea04ab8d733b378a0d4513: in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git branch
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git checkout master
+DEBUG: ran git checkout master in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git reset --hard 3de0db231c8bdb506eea04ab8d733b378a0d4513
+DEBUG: ran git reset --hard 3de0db231c8bdb506eea04ab8d733b378a0d4513 in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git clean -fd .
+DEBUG: ran clean --force -d . in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git merge bcfcc5d1a09cccd9813fd85dd324fd9392f2c568
+DEBUG: ran git merge bcfcc5d1a09cccd9813fd85dd324fd9392f2c568 in 
+DEBUG: JX_LOG_LEVEL=error LC_ALL=C git log --format=%H%x1f%an%x1f%ae%x1f%cn%x1f%ce%x1f%s%n%b%x1e 3de0db231c8bdb506eea04ab8d733b378a0d4513..HEAD
+Merged SHA bcfcc5d1a09cccd9813fd85dd324fd9392f2c568 with commit message 'chore: Promote v2-nodey to version 0.0.12' into base branch master
+
+Showing logs for build [32mcb-kubecd-environment-bootv3-ch-cdb4r-1[0m stage [32mpr-checks[0m and container [32mstep-verify-secrets[0m
+created directory /secrets/**-boot
+saved vault cert file to /tmp/316196408/vault-ca.crt
+loaded Secrets from: Vault Secret Manager for vault vault at https://vault:8200
+exported Secrets to file: /secrets/**-boot/secrets.yaml
+
+Showing logs for build [32mcb-kubecd-environment-bootv3-ch-cdb4r-1[0m stage [32mpr-checks[0m and container [32mstep-create-helmfile[0m
+
+Showing logs for build [32mcb-kubecd-environment-bootv3-ch-cdb4r-1[0m stage [32mpr-checks[0m and container [32mstep-lint-helmfile-system[0m
+Adding repo dev http://chartmuseum-**.35.205.96.40.nip.io
+Adding repo stable https://kubernetes-charts.storage.googleapis.com
+"stable" has been added to your repositories
+
+in ./helmfile.yaml: helm exited with status 1:
+  Error: looks like "http://chartmuseum-**.35.205.96.40.nip.io" is not a valid chart repository or cannot be reached: Get http://chartmuseum-**.35.205.96.40.nip.io/index.yaml: dial tcp: lookup chartmuseum-**.35.205.96.40.nip.io on 10.51.240.10:53: server misbehaving
+[31m
+Pipeline failed on stage 'pr-checks' : container 'step-lint-helmfile-system'. The execution of the pipeline has stopped.[0m
